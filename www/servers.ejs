@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discord Servers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <% if(servers) { %>
+                        <div class="box">
+                            <h1 class="title">Sunucular</h1>
+                            <p class="subtitle">
+                                Katıldığınız sunucular
+                            </p>
+                            <% servers.forEach(server => { %>
+                                <!-- if(!server.owner) return -->
+                                <div class="box">
+                                    <article class="media">
+                                        <div class="media-left is-hidden-mobile">
+                                            <figure class="image is-64x64">
+                                                <img src="https://cdn.discordapp.com/icons/<%= server.id %>/<%= server.icon %>.png" style="border-radius: 50%;">
+                                            </figure>
+                                        </div>
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <p>
+                                                    <strong><%= server.name %></strong>
+                                                    <br>
+                                                    <small><%= server.id %></small>
+                                                    <br>
+                                                    <small>Statü: <%= server.owner ? 'Sahip' : 'Üye' %></small>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% } else { %>
+                        <div class="box">
+                            <h1 class="title">Hata</h1>
+                            <p class="subtitle">
+                                Sunuculara erişim izniniz yok
+                            </p>
+                        </div>
+                    <% } %>
+                    <a href="/" class="button is-primary">Anasayfa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

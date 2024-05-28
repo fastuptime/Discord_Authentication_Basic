@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discord Connections</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <% if(connections) { %>
+                        <div class="box">
+                            <h1 class="title">Bağlantılar</h1>
+                            <p class="subtitle">
+                                Bağlantılarınız
+                            </p>
+                            <% connections.forEach(x => { %>
+                                <div class="box">
+                                    <article class="media">
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <p>
+                                                    <strong><%= x.name %></strong>
+                                                    <br>
+                                                    <small><%= x.id %></small>
+                                                    <br>
+                                                    <small>Platform: <%= x.type %></small>
+                                                    <br>
+                                                    <small>Doğrulandı: <%= x.verified ? 'Evet' : 'Hayır' %></small>
+                                                    <br>
+                                                    <small>Görünürlük: <%= x.visibility ? 'Görünür' : 'Gizli' %></small>
+                                                    <br>
+                                                    <small>Arkadaş Senkronizasyonu: <%= x.friend_sync ? 'Açık' : 'Kapalı' %></small>
+                                                    <br>
+                                                    <small>Metadata Görünürlüğü: <%= x.metadata_visibility ? 'Açık' : 'Kapalı' %></small>
+                                                    <br>
+                                                    <small>Aktivite Göster: <%= x.show_activity ? 'Açık' : 'Kapalı' %></small>
+                                                    <br>
+                                                    <small>İki Yönlü Bağlantı: <%= x.two_way_link ? 'Açık' : 'Kapalı' %></small>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% } else { %>
+                        <div class="box">
+                            <h1 class="title">Hata</h1>
+                            <p class="subtitle">
+                                Erişim izniniz yok
+                            </p>
+                        </div>
+                    <% } %>
+                    <a href="/" class="button is-primary">Anasayfa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
